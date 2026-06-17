@@ -518,6 +518,11 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 10px; transform: rotate(-45
   .cards.col-4, .partner-ways, .award-grid, .map-stats { grid-template-columns: repeat(2,1fr); }
   .footer__top { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
+/* Mobile typography — scale all fonts down ~20% (rem/clamp based) */
+@media (max-width: 768px){
+  html { font-size: 80%; }
+  body { font-size: 1.0625rem; } /* 17px → 13.6px */
+}
 @media (max-width: 920px){
   .nav { position: fixed; inset: 0 0 0 auto; width: min(330px, 84vw); background: #fff; flex-direction: column; align-items: stretch; justify-content: flex-start; padding: 100px 26px 40px; gap: 4px; transform: translateX(100%); transition: transform 0.45s var(--ease); box-shadow: var(--shadow-lg); overflow-y: auto; }
   body.menu-open .nav { transform: translateX(0); }
@@ -535,7 +540,6 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 10px; transform: rotate(-45
   .spotlight__quote { position: static; max-width: none; margin-top: 20px; }
 }
 @media (max-width: 680px){
-  body { font-size: 16px; }
   .section { padding: 76px 0; }
   .cards, .imgcards, .feature-deck, .impact-grid, .prayer-wall, .cards.col-4, .partner-ways, .award-grid, .gallery, .map-stats, .form-grid, .stats { grid-template-columns: 1fr; }
   .gallery { grid-auto-rows: 220px; }
