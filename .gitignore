@@ -1,0 +1,11 @@
+# OS files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Original upload folder (images already copied into assets/images/)
+Deborah Network Images/
+
+# Editor
+.vscode/
+.idea/
