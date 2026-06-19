@@ -48,29 +48,85 @@
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero__bg">
-    <div class="hero__slider" id="heroSlider" data-interval="1600">
-      <div class="hero__slide"><img src="assets/images/IMG_7077.jpg" alt="Pastor Dr. Alexandra Louisa ministering before a gathering of women" /></div>
-      <div class="hero__slide"><img src="assets/images/worship-leaders.jpg" alt="Worship leaders ministering on stage" /></div>
-      <div class="hero__slide"><img src="assets/images/conv-crowd.jpg" alt="A full hall of women at the Deborah Network Convention" /></div>
-      <div class="hero__slide"><img src="assets/images/teaching-podium.jpg" alt="A speaker teaching at the convention" /></div>
-      <div class="hero__slide"><img src="assets/images/worship-joy.jpg" alt="A woman in joyful worship" /></div>
-    </div>
+<!-- ============ HERO SLIDER ============ -->
+<section class="hero" id="heroSlider" data-interval="4200">
+  <div class="hero__slides">
+
+    <article class="hero__slide is-active">
+      <div class="hero__media"><img src="assets/images/IMG_7077.jpg" alt="Pastor Dr. Alexandra Louisa ministering before a gathering of women" /></div>
+      <div class="hero__overlay"></div>
+      <div class="container"><div class="hero__content">
+        <span class="hero__badge"><span class="dot"></span> Arise, Deborah — A Global Movement</span>
+        <h1>Raising Women of <em>Purpose</em>, Leadership &amp; Kingdom Influence</h1>
+        <p class="hero__sub">Empowering women to lead boldly, serve faithfully, and transform communities through faith, mentorship, and leadership development.</p>
+        <div class="btn-row">
+          <a class="btn btn--gold btn--lg" href="membership.html">Join The Network</a>
+          <a class="btn btn--ghost-light btn--lg" href="events.html">Upcoming Events</a>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="hero__slide">
+      <div class="hero__media"><img src="assets/images/worship-leaders.jpg" alt="Worship leaders ministering on stage at the convention" /></div>
+      <div class="hero__overlay"></div>
+      <div class="container"><div class="hero__content">
+        <span class="hero__badge"><span class="dot"></span> The Deborah Network Convention</span>
+        <h1>Encounter God. Discover <em>Purpose</em>. Lead Boldly.</h1>
+        <p class="hero__sub">Thousands of women gathering to worship, learn, and be empowered for transformational influence in every sphere of society.</p>
+        <div class="btn-row">
+          <a class="btn btn--gold btn--lg" href="events.html">Upcoming Events</a>
+          <a class="btn btn--ghost-light btn--lg" href="membership.html">Become A Member</a>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="hero__slide">
+      <div class="hero__media"><img src="assets/images/teaching-podium.jpg" alt="A speaker teaching women at the convention" /></div>
+      <div class="hero__overlay"></div>
+      <div class="container"><div class="hero__content">
+        <span class="hero__badge"><span class="dot"></span> Mentorship &amp; Leadership</span>
+        <h1>You Were Created To <em>Influence</em> Nations</h1>
+        <p class="hero__sub">Through mentorship, coaching, and leadership development we raise a generation of women equipped to lead with wisdom and integrity.</p>
+        <div class="btn-row">
+          <a class="btn btn--gold btn--lg" href="programs.html">Explore Programs</a>
+          <a class="btn btn--ghost-light btn--lg" href="membership.html">Join The Network</a>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="hero__slide">
+      <div class="hero__media"><img src="assets/images/worship-joy.jpg" alt="A woman in joyful, surrendered worship" /></div>
+      <div class="hero__overlay"></div>
+      <div class="container"><div class="hero__content">
+        <span class="hero__badge"><span class="dot"></span> Prayer &amp; Revival</span>
+        <h1>A Movement Built On The <em>Altar</em> Of Prayer</h1>
+        <p class="hero__sub">Join a global community of intercessors believing for revival, breakthrough, and the transformation of nations.</p>
+        <div class="btn-row">
+          <a class="btn btn--gold btn--lg" href="programs.html#prayer">Prayer Network</a>
+          <a class="btn btn--ghost-light btn--lg" href="partner.html">Partner With Us</a>
+        </div>
+      </div></div>
+    </article>
+
+    <article class="hero__slide">
+      <div class="hero__media"><img src="assets/images/conv-crowd.jpg" alt="A full hall of women at the Deborah Network Convention" /></div>
+      <div class="hero__overlay"></div>
+      <div class="container"><div class="hero__content">
+        <span class="hero__badge"><span class="dot"></span> Empowerment &amp; Impact</span>
+        <h1>Transforming Lives, One <em>Woman</em> At A Time</h1>
+        <p class="hero__sub">From empowerment grants to community outreach — faith expressed through action that changes families, communities, and nations.</p>
+        <div class="btn-row">
+          <a class="btn btn--gold btn--lg" href="impact.html">Our Impact</a>
+          <a class="btn btn--ghost-light btn--lg" href="partner.html">Support The Mission</a>
+        </div>
+      </div></div>
+    </article>
+
   </div>
-  <div class="hero__overlay"></div>
-  <div class="container">
-    <div class="hero__content">
-      <span class="hero__badge"><span class="dot"></span> Arise, Deborah — A Global Movement</span>
-      <h1>Raising Women of <em>Purpose</em>, Leadership &amp; Kingdom Influence</h1>
-      <p class="hero__sub">Empowering women to lead boldly, serve faithfully, and transform communities through faith, mentorship, and leadership development.</p>
-      <div class="btn-row">
-        <a class="btn btn--gold btn--lg" href="membership.html">Join The Network</a>
-        <a class="btn btn--ghost-light btn--lg" href="events.html">Upcoming Events</a>
-      </div>
-    </div>
-  </div>
+
+  <button class="hero__arrow prev" id="heroPrev" aria-label="Previous slide">&#8249;</button>
+  <button class="hero__arrow next" id="heroNext" aria-label="Next slide">&#8250;</button>
+  <div class="hero__dots" id="heroDots" role="tablist" aria-label="Hero slides"></div>
   <a href="#impact" class="hero__scroll"><span class="mouse"></span> Scroll</a>
 </section>
 

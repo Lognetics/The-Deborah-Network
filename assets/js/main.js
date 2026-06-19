@@ -295,33 +295,64 @@
     });
   }
 
-  /* ---------- Hero auto-scrolling slider (fast, seamless loop) ---------- */
+  /* ---------- Modern hero slider (per-slide content, auto + manual) ---------- */
   const heroSlider = document.getElementById("heroSlider");
-  if (heroSlider && heroSlider.children.length > 1) {
-    const total = heroSlider.children.length;
-    heroSlider.appendChild(heroSlider.children[0].cloneNode(true)); // clone first for seamless wrap
-    const speed = parseInt(heroSlider.dataset.interval, 10) || 1600;
-    const TRANS = "transform 0.85s cubic-bezier(0.22,1,0.36,1)";
-    let i = 0;
-    heroSlider.style.transition = TRANS;
-    const go = () => {
-      i++;
-      heroSlider.style.transform = "translateX(" + -i * 100 + "%)";
-    };
-    heroSlider.addEventListener("transitionend", () => {
-      if (i >= total) {
-        heroSlider.style.transition = "none";
-        i = 0;
-        heroSlider.style.transform = "translateX(0)";
-        void heroSlider.offsetWidth; // force reflow to commit the snap
-        heroSlider.style.transition = TRANS;
-      }
-    });
-    let timer = setInterval(go, speed);
-    document.addEventListener("visibilitychange", () => {
-      clearInterval(timer);
-      if (!document.hidden) timer = setInterval(go, speed);
-    });
+  if (heroSlider) {
+    const slides = Array.from(heroSlider.querySelectorAll(".hero__slide"));
+    if (slides.length > 1) {
+      const speed = parseInt(heroSlider.dataset.interval, 10) || 4200;
+      const dotsWrap = document.getElementById("heroDots");
+      let idx = slides.findIndex((s) => s.classList.contains("is-active"));
+      if (idx < 0) idx = 0;
+      let timer;
+
+      // build dots
+      const dots = slides.map((_, n) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("role", "tab");
+        b.setAttribute("aria-label", "Go to slide " + (n + 1));
+        b.addEventListener("click", () => {
+          show(n);
+          restart();
+        });
+        dotsWrap && dotsWrap.appendChild(b);
+        return b;
+      });
+
+      const show = (n) => {
+        idx = (n + slides.length) % slides.length;
+        slides.forEach((s, k) => s.classList.toggle("is-active", k === idx));
+        dots.forEach((d, k) => d.classList.toggle("active", k === idx));
+      };
+      const next = () => show(idx + 1);
+      const prev = () => show(idx - 1);
+      const start = () => (timer = setInterval(next, speed));
+      const stop = () => clearInterval(timer);
+      const restart = () => { stop(); start(); };
+
+      show(idx);
+      start();
+
+      const nextBtn = document.getElementById("heroNext");
+      const prevBtn = document.getElementById("heroPrev");
+      nextBtn && nextBtn.addEventListener("click", () => { next(); restart(); });
+      prevBtn && prevBtn.addEventListener("click", () => { prev(); restart(); });
+
+      // pause on hover, and when tab hidden
+      heroSlider.addEventListener("mouseenter", stop);
+      heroSlider.addEventListener("mouseleave", start);
+      document.addEventListener("visibilitychange", () => {
+        stop();
+        if (!document.hidden) start();
+      });
+
+      // keyboard arrows
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") { prev(); restart(); }
+        else if (e.key === "ArrowRight") { next(); restart(); }
+      });
+    }
   }
 
   /* ---------- Footer year ---------- */
