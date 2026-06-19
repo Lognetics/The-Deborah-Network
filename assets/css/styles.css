@@ -179,8 +179,14 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 10px; transform: rotate(-45
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100vh; display: flex; align-items: center; color: #fff; overflow: hidden; }
-.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+/* hero slider — fast auto-scrolling track */
+.hero__slider { display: flex; height: 100%; width: 100%; will-change: transform; }
+.hero__slide { position: relative; min-width: 100%; height: 100%; }
+.hero__slide img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transform: scale(1.06); animation: heroKen 6s ease-out infinite alternate; }
+@keyframes heroKen { from { transform: scale(1.04); } to { transform: scale(1.12); } }
+@media (prefers-reduced-motion: reduce) { .hero__slide img { animation: none; transform: none; } }
 .hero__overlay { position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(120deg, rgba(54,23,58,0.92) 0%, rgba(74,35,79,0.78) 45%, rgba(74,35,79,0.35) 100%);
 }

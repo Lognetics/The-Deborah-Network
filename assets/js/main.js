@@ -295,6 +295,35 @@
     });
   }
 
+  /* ---------- Hero auto-scrolling slider (fast, seamless loop) ---------- */
+  const heroSlider = document.getElementById("heroSlider");
+  if (heroSlider && heroSlider.children.length > 1) {
+    const total = heroSlider.children.length;
+    heroSlider.appendChild(heroSlider.children[0].cloneNode(true)); // clone first for seamless wrap
+    const speed = parseInt(heroSlider.dataset.interval, 10) || 1600;
+    const TRANS = "transform 0.85s cubic-bezier(0.22,1,0.36,1)";
+    let i = 0;
+    heroSlider.style.transition = TRANS;
+    const go = () => {
+      i++;
+      heroSlider.style.transform = "translateX(" + -i * 100 + "%)";
+    };
+    heroSlider.addEventListener("transitionend", () => {
+      if (i >= total) {
+        heroSlider.style.transition = "none";
+        i = 0;
+        heroSlider.style.transform = "translateX(0)";
+        void heroSlider.offsetWidth; // force reflow to commit the snap
+        heroSlider.style.transition = TRANS;
+      }
+    });
+    let timer = setInterval(go, speed);
+    document.addEventListener("visibilitychange", () => {
+      clearInterval(timer);
+      if (!document.hidden) timer = setInterval(go, speed);
+    });
+  }
+
   /* ---------- Footer year ---------- */
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 })();
