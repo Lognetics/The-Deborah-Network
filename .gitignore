@@ -3,8 +3,10 @@
 **/.DS_Store
 Thumbs.db
 
-# Original upload folder (images already copied into assets/images/)
+# Original upload folders (curated copies already live in assets/images/)
 Deborah Network Images/
+assets/images/Deborah Network extra Images/
+assets/images/Logo/
 
 # Editor
 .vscode/
